@@ -21,6 +21,7 @@ export default function ProductPage(props) {
     const newItem = {
       quantity: 1,
       price_id: price_id,
+      name: product.name,
     };
     addItemToCart({ newItem });
   }
@@ -43,7 +44,10 @@ export default function ProductPage(props) {
           <p className="text-sm md:text-lg mx-auto md:mx-0 capitalize">
             {product.description}
           </p>
-          <button className="bg-slate-700 text-white rounded hover:bg-slate-500 cursor-pointer px-4 py-2 md:my-2">
+          <button
+            onClick={handleAddToCart}
+            className="bg-slate-700 text-white rounded hover:bg-slate-500 cursor-pointer px-4 py-2 md:my-2"
+          >
             Add on Cart
           </button>
         </div>

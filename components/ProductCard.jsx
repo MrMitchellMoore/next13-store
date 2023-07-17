@@ -26,7 +26,7 @@ export default function ProductCard({ product }) {
   return (
     <div
       onClick={onProductClick}
-      className="flex flex-col shadow bg-[#f7f6f2] hover:shadow-lg cursor-pointer"
+      className="flex flex-col shadow bg-[#f7f6f2] hover:shadow-lg cursor-pointer border border-black"
     >
       <Image
         src={productInfo.images[0]}
@@ -36,12 +36,12 @@ export default function ProductCard({ product }) {
         height={133}
         className="object-fill w-full h-full"
       />
-      <div className="flex flex-col gap-2 p-4">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-2 p-4 bg-slate-500 border border-black shadow-md text-slate-300">
+        <div className="flex items-center justify-between capitalize">
           <h3 className="font-bold text-xl">{name}</h3>
           <p className="font-bold">${cost / 100}</p>
         </div>
-        <p className="text-sm">{description}</p>
+        <p className="text-sm capitalize">{description}</p>
       </div>
     </div>
   );
