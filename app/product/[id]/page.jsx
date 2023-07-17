@@ -22,6 +22,7 @@ export default function ProductPage(props) {
       quantity: 1,
       price_id: price_id,
       name: product.name,
+      cost: product.cost,
     };
     addItemToCart({ newItem });
   }

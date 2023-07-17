@@ -21,16 +21,32 @@ export default function Modal() {
           ></i>
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-slate-300 w-2/3"></div>
         </div>
-        <div>
+        <div className="px-2 overflow-scroll m-1 flex-1 flex flex-col">
           {cartItems.length === 0 ? (
             <>There are no items in your cart 😩.</>
           ) : (
             <>
               {cartItems.map((cartItem, itemIndex) => {
-                return <div key={itemIndex}>{cartItem.name}</div>;
+                return (
+                  <div
+                    key={itemIndex}
+                    className="flex border-l border-solid border-slate-700 flex-col gap-2 px-2 capitalize font-bold"
+                  >
+                    <div className="flex items-center justify-between text-xl">
+                      <h2>{cartItem.name}</h2>
+                      <p>${cartItem.cost / 100}</p>
+                    </div>
+                    <p className="text-slate-600 text-sm">
+                      Quantity: {cartItem.quantity}
+                    </p>
+                  </div>
+                );
               })}
             </>
           )}
+        </div>
+        <div className="border border-solid border-slate-700 text-2xl h-fit px-2 py-1 grid place-items-center cursor-pointer hover:bg-green-500 hover:duration-[500ms] ease-in-out">
+          Checkout
         </div>
       </div>
     </div>,

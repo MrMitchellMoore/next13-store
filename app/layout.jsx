@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${lato.className} min-h-screen flex flex-col relative bg-slate-500`}
+        className={`${lato.className} min-h-screen flex flex-col relative bg-slate-300`}
       >
         <Header />
         {children}
