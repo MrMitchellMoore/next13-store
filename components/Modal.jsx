@@ -1,10 +1,31 @@
 "use client";
 import useCart from "@/app/(store)/store";
+import { useRouter } from "next/navigation";
 import ReactDom from "react-dom";
 
 export default function Modal() {
   const closeModal = useCart((state) => state.setOpenModal);
   const cartItems = useCart((state) => state.cart);
+  console.log(cartItems);
+  const router = useRouter();
+
+  async function checkout() {
+    const lineItems = cartItems.map((cartItem) => {
+      return {
+        price: cartItem.id,
+        quantity: cartItem.quantity,
+      };
+    });
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lineItems }),
+    });
+    const data = await res.json();
+    router.push(data.session.url);
+  }
 
   return ReactDom.createPortal(
     <div className="fixed top-0 left-0 w-screen h-screen z-50">
@@ -45,7 +66,10 @@ export default function Modal() {
             </>
           )}
         </div>
-        <div className="border border-solid border-slate-700 text-2xl h-fit px-2 py-1 grid place-items-center cursor-pointer hover:bg-green-500 hover:duration-[500ms] ease-in-out">
+        <div
+          onClick={checkout}
+          className="border border-solid border-slate-700 text-2xl h-fit px-2 py-1 grid place-items-center cursor-pointer hover:bg-green-500 hover:duration-[500ms] ease-in-out"
+        >
           Checkout
         </div>
       </div>

@@ -3,7 +3,7 @@ import Stripe from "stripe";
 
 async function getStripeProducts() {
   const stripe = new Stripe(process.env.NEXT_PUBLIC_SECRET_KEY ?? "", {
-    apiVersion: "2020-08-27",
+    apiVersion: "2022-11-15",
   });
   const res = await stripe.prices.list({
     expand: ["data.product"],

@@ -3,7 +3,8 @@ import useCart from "@/app/(store)/store";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function ProductCard({ product }) {
+export default function ProductCard(props) {
+  const { product } = props;
   const { id: price_id, unit_amount: cost, product: productInfo } = product;
   const { name, description } = productInfo;
 
@@ -20,7 +21,7 @@ export default function ProductCard({ product }) {
       productInfo,
     };
     setProduct({ newProduct });
-    router.push("/product/" + price_id);
+    router.push(`/product/${price_id}`);
   }
 
   return (
