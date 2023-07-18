@@ -4,7 +4,7 @@ import useCart from "../../(store)/store";
 import { redirect } from "next/navigation";
 
 //TODO Learn NextJS 13: Build a Modern Full-Stack E-commerce App with TailwindCSS + Stripe + Zustand
-//41:42
+//1:24:23
 
 export default function ProductPage(props) {
   const { params } = props;
